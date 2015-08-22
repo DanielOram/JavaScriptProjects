@@ -2,7 +2,8 @@ var app = require('express')();
 var http = require('http').Server(app);
 
 app.get('/', function(req, res){
-	res.send('<h1>My first message with socket.io!</h1>');
+	res.sendFile(__dirname + '/index.html');
+	//res.send('<h1>My first message with socket.io!</h1>');
 });
 
 http.listen(3000, function(){
