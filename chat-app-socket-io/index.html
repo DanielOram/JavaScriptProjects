@@ -12,6 +12,23 @@
 	  <!-- Latest compiled and minified JavaScript -->
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	  
+	  <!-- load socket.io client to expose global io object and then connect.
+	  	 send form data on submit-->
+		  
+		  
+		  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+
+		  <script>
+		  	alert('start');
+		    var socket = io();
+		    $('form').submit(function(){
+				alert('form');
+		      socket.emit('chat message', $('#m').val());
+		      $('#m').val('');
+		      return false;
+		    });
+		  </script>
+	  
 	  
     <title>Socket.IO chat</title>
 	<!--
@@ -28,18 +45,14 @@
 		-->
   </head>
   <body>
-	  <!-- load socket.io client to expose global io object and then connect -->
-	  <script src="/socket.io/socket.io.js"></script>
-	  <script>
-	    var socket = io();
-	  </script>
 	  
-	  <!--
+	  
+	  
     <ul id="messages"></ul>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
-		  -->
+		  
 	
 	<div class="container-full">
 
@@ -54,7 +67,7 @@
 			  
 			  <form class="col-md-12">
 				  <div class="input-group input-group-lg col-sm-11">
-				  		<input type="text" class="form-control input-lg" placeholder="Type a message here...">
+				  		<input id="m" type="text" class="form-control input-lg" placeholder="Type a message here...">
 				  	  	<span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">Enter</button></span>
 					</div>
 			  </form>
