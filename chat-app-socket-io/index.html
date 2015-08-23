@@ -28,6 +28,12 @@
 		-->
   </head>
   <body>
+	  <!-- load socket.io client to expose global io object and then connect -->
+	  <script src="/socket.io/socket.io.js"></script>
+	  <script>
+	    var socket = io();
+	  </script>
+	  
 	  <!--
     <ul id="messages"></ul>
     <form action="">
