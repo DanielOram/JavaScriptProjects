@@ -23,7 +23,6 @@
 
 		  <script>
 		  $(document).ready(function () {
-			  alert('hola');
 		    var socket = io();
 		    $('form').submit(function(){
 		      socket.emit('chat message', $('#m').val());
@@ -31,7 +30,7 @@
 		      return false;
 		    });
 			});
-		  </script>
+		  </script><!-- socket.io client side processor -->
 	  
 	  
     <title>Socket.IO chat</title>
