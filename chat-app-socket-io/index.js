@@ -15,12 +15,13 @@ app.get('/', function(req, res){
 //listen on the connection event for incoming sockets, and log to console
 io.on('connection', function(socket){
 	
+	//display connection information
 	console.log('a user connected');
 	//disconnect event
 	socket.on('disconnect', function(){
 	    console.log('user disconnected');
 	  });
-	
+
 	//display chat message on console
     socket.on('chat message', function(msg){
       console.log('message: ' + msg);
