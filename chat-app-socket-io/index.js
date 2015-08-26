@@ -1,3 +1,4 @@
+//These socket.io events fire whenever the page is loaded or reloaded or are sent an event from a client?
 var app = require('express')();
 var http = require('http').Server(app);
 //initialises a new instance of socket.io by passing the http object
@@ -12,8 +13,12 @@ app.get('/', function(req, res){
 	//res.send('<h1>My first message with socket.io!</h1>');
 });
 
+//send an event to EVERYONE
+//io.emit('some event', { for: 'everyone' });
+
 //listen on the connection event for incoming sockets, and log to console
 io.on('connection', function(socket){
+
 	
 	//display connection information
 	console.log('a user connected');
@@ -22,10 +27,16 @@ io.on('connection', function(socket){
 	    console.log('user disconnected');
 	  });
 
-	//display chat message on console
+	//display chat message on console and to webpage
     socket.on('chat message', function(msg){
-      console.log('message: ' + msg);
+      	console.log('message: ' + msg);
+		//send event to everyone except a certain socket i.e. yourself. 'broadcast'
+		io.emit('chat message', msg);
     });
+
+	//send event to everyone except a certain socket
+	//socket.broadcast.emit('hi');
+
 });
 
 http.listen(3000, function(){

@@ -22,34 +22,45 @@
 		  
 
 		  <script>
-		  $(document).ready(function () {
-		    var socket = io();
-		    $('form').submit(function(){
-		      socket.emit('chat message', $('#m').val());
-		      $('#m').val('');
-		      return false;
-		    });
-			});
+			  $(document).ready(function () {
+				  var socket = io();
+				  $('form').submit(function () {
+					  socket.emit('chat message', $('#m').val());
+					  $('#m').val('');
+					  return false;
+				  });
+				  <!--add messages to page -->
+				  socket.on('chat message', function (msg) {
+					  $('#messages').append($('<li>').text(msg));
+				  });
+			  });
+
 		  </script><!-- socket.io client side processor -->
-	  
-    <title>Socket.IO chat</title>
-	
-	
 	<!--
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
+	  <script>
+		  var socket = io();
+		  $('form').submit(function(){
+			  socket.emit('chat message', $('#m').val());
+			  $('#m').val('');
+			  return false;
+		  });
+		  socket.on('chat message', function(msg){
+			  $('#messages').append($('<li>').text(msg));
+		  });
+	  </script>
 	-->
+	  
+	  <title>Socket.IO chat</title>
+
+	  <style>
+		  #messages { list-style-type: none; margin: 0; padding: 0; }
+		  #messages li { padding: 5px 10px; }
+		  #messages li:nth-child(odd) { background: #eee; }
+	  </style>
+
   </head>
   <body>
-  
+  <ul id="messages"></ul>
 	  <!--
     <ul id="messages"></ul>
     <form action="">
@@ -69,7 +80,7 @@
 
 				<form class="col-md-12">
 					<div class="input-group input-group-lg col-sm-11">
-						<input id="m" type="text" class="form-control input-lg" placeholder="Type a message here...">
+						<input id="m" autocomplete="off" type="text" class="form-control input-lg" placeholder="Type a message here...">
 						<span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">Enter</button></span>
 					</div>
 				</form>
