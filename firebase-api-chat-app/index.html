@@ -40,7 +40,7 @@
 	  $(document).ready(function () {
 		  var socket = io();
 		  $('form').submit(function () {
-			  alert();
+
 			  if ( $.trim( $('#m').val() ) != '' ){
 				  socket.emit('chat message', $('#m').val());
 			  }
@@ -57,11 +57,12 @@
 
   <!-- -->
   <script>
+	  $(document).ready(function () {
 	  var myDataRef = new Firebase('https://do-chat-app-firebase.firebaseio.com/');
 	  //display all messages in database
 	  myDataRef.on('child_added', function(snapshot) {
 		  var db_message = snapshot.val();
-		  alert(db_message);
+
 	  });
 
 
@@ -69,31 +70,15 @@
 	  var username;
 	  var message;
 	  //username
-	  document.getElementById('firebase-form-username').submit(function () {
+	  $('form').submit(function () {
 		  alert('username');
 		  if ( $.trim( $('#firebase-u').val() ) != '' ){
 			  username = $('#firebase-u').val();
+			  myDataRef.push({name: username, text: "test data"});
 		  }
-		  $('#m').val('');
+		  $('#firebase-u').val('');
 		  return false;
-	  });
-	  //message
-	  document.getElementById('firebase-form-message').submit(function () {
-		  alert('message');
-		  if ( $.trim( $('#firebase-m').val() ) != '' ){
-			  message = $('#firebase-m').val();
-			  alert(message);
-			  if (username != null){
-				  alert(username+" "+message);
-				  myDataRef.push({name: username, text: message});
-			  }
-		  }
-		  $('#m').val('');
-		  return false;
-	  });
-
-
-
+	  })});
   </script>
 
 	<!-- firebase messages -->
@@ -102,11 +87,6 @@
   <!-- user-name form -->
   <form id="firebase-form-username" action="">
 	  <input id="firebase-u" autocomplete="off" /><button>Send</button>
-  </form>
-
-  <!-- user-message form-->
-  <form id="firebase-form-message" action="">
-	  <input id="firebase-m" autocomplete="off" /><button>Send</button>
   </form>
 
 
