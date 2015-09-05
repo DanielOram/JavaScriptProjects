@@ -71,6 +71,7 @@
 		  socket.on('chat message',  function (data) {
 			  if(data['name'] == username) {
 				  $('#messages').append($('<li class="list-group-item" style="background: #eee; color: #783F7B;">').text("{0}: {1}".f(data['name'], data['message'])));
+				  //$($('<span class=" fa fa-comment fa-2x">')).appendTo('#messages');
 			  } else {
 				  $('#messages').append($('<li class="list-group-item not-my-message">').text("{0}: {1}".f(data['name'], data['message'])));
 			  }
@@ -94,17 +95,19 @@
 		  <!-- Collect the nav links, forms, and other content for toggling -->
 		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			  <ul class="nav navbar-nav">
-				  <li><a href="http://twitter.com/home?status=" title="Share on Twitter" target="_blank" class="btn btn-twitter fa fa-twitter fa-2x"></i></a></li>
+				  <button type="button" class="btn btn-default navbar-btn"><li><a href="http://twitter.com/home?status=" title="Share on Twitter" target="_blank" class="btn btn-twitter fa fa-twitter fa-2x"></i></a></li></button>
+				  <button type="button" class="btn btn-default navbar-btn"><li><a href="#" title="Share on Facebook" target="_blank" class="btn btn-twitter fa fa-facebook fa-2x"></i></a></li></button>
+				  <button type="button" class="btn btn-default navbar-btn"><li><a href="#" title="Share on Linkedin" target="_blank" class="btn btn-twitter fa fa-linkedin fa-2x"></i></a></li></button>
+
 
 			  </ul>
 
 			  <ul class="nav navbar-nav navbar-right">
-				  <li><a href="#">Link</a></li>
 				  <li class="dropdown">
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share! <span class="caret"></span></a>
 					  <ul class="dropdown-menu">
 						  <li><a href="http://twitter.com/home?status=" title="Share on Twitter" target="_blank" class="btn btn-twitter fa fa-twitter"></i> Share on Twitter</a></li>
-						  <li><a href="#">Another action</a></li>
+						  <li><a href="http://twitter.com/home?status=" title="Share on Twitter" target="_blank" class="btn btn-twitter fa fa-facebook"></i> Share on Facebook</a></li>
 						  <li><a href="#">Something else here</a></li>
 						  <li role="separator" class="divider"></li>
 						  <li><a href="#">Separated link</a></li>
@@ -142,7 +145,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading"><span><h3>message board</h3></span>
+					<div class="panel-heading"><span><h3>Chat Board</h3></span>
 					</div>
 					<div class="panel-body" id="message-board" style="overflow: scroll">
 						<ul id="messages" class="list-group"></ul>
