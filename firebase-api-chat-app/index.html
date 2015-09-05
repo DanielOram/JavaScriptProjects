@@ -36,59 +36,123 @@
   </head>
   <body>
 
+  <!-- firebase messaging script -->
   <script>
 	  $(document).ready(function () {
 		  var socket = io();
-		  $('form').submit(function () {
+		  var userobject; //firebase object
+		  var messages; //snapshot of db object
+		  var myDataRef = new Firebase('https://do-chat-app-firebase.firebaseio.com/');
+		  //create object in firebase backend
+		  userobject = myDataRef.push({});
 
+
+		  userobject.on('child_added', function(snapshot) {
+			  var db_message = snapshot.val();
+			  $('#messages').append($('<li class="list-group-item">').text('test'));
+			  $('#messages').append($('<li class="list-group-item">').text(userobject.name));
+			  //$('#firebase-messages').append($('<li>').text(db_message['name']));
+		  });
+
+		  myDataRef.on('child_changed', function(snapshot) {
+			  var db_message = snapshot.val();
+			  $('#messages').append($('<li class="list-group-item">').text(Object.keys(db_message)));
+			  //$('#firebase-messages').append($('<li>').text(db_message['name']));
+		  });
+
+
+
+
+		  /*//get data in database on addition of an object
+		  myDataRef.on('child_added', function(snapshot) {
+			  messages = snapshot.val();
+			  alert(Object.keys(messages));
+			  //loop through keys in object and print the message value in each
+			  for (key in Object.keys(messages)){
+				  alert(message[key]);
+			  }
+			  messages.limitToLast(2).once('value', function(snap) {
+				  var i = 0;
+				  snap.forEach(function(userSnap) {
+					  alert('f');
+					  console.log('user %s is in position %d with %d points', snap.key(), i++, snap.val());
+				  });
+			  });
+
+			  $('#firebase-messages').append($('<li>').text(messages));
+			  //$('#messages').append($('<li class="list-group-item">').text(msg));
+		  });*/
+
+
+			//push message
+		  $('form').submit(function () {
 			  if ( $.trim( $('#m').val() ) != '' ){
-				  socket.emit('chat message', $('#m').val());
+				  //socket.emit('chat message', $('#m').val());
+				  userobject.push({name: 'Joe Bloggs', message: [$('#m').val()]});
+
 			  }
 			  $('#m').val('');
 			  return false;
 		  });
 		  <!--add messages to page -->
 		  socket.on('chat message', function (msg) {
-			  $('#messages').append($('<li class="list-group-item">').text(msg));
+			  //$('#messages').append($('<li class="list-group-item">').text(msg));
 		  });
 	  });
 
   </script><!-- socket.io client side processor -->
 
-  <!-- -->
+  <!-- firebase messaging script -->
+  <!--
   <script>
 	  $(document).ready(function () {
 	  var myDataRef = new Firebase('https://do-chat-app-firebase.firebaseio.com/');
 	  //display all messages in database
 	  myDataRef.on('child_added', function(snapshot) {
 		  var db_message = snapshot.val();
+		  $('#firebase-messages').append($('<li>').text(db_message));
 
 	  });
 
 
 
-	  var username;
+	  var username;	//firebase record
 	  var message;
-	  //username
-	  $('form').submit(function () {
+	  var userobject; //firebase object
+		  
+
+	  //username form should disappear after setup
+	  $('form#firebase-form-username').submit(function () {
 		  alert('username');
 		  if ( $.trim( $('#firebase-u').val() ) != '' ){
-			  username = $('#firebase-u').val();
-			  myDataRef.push({name: username, text: "test data"});
+			  username_str = $('#firebase-u').val();
+			  alert('hodor');
+			  //create userobject record for user
+			  userobject = myDataRef.push({name: username_str, messages: ['message 1','message 2']});
+			  //set record of user's name with the userobject key as value
+			  //var contents = {};
+			  //contents[username_str] = userobject.key();
+			  //username = myDataRef.push(contents);
+			  //userobject.set({name: 'changed'});
+			  alert(userobject.key() + ": " + userobject);
+
 		  }
 		  $('#firebase-u').val('');
+
 		  return false;
 	  })});
   </script>
+  -->
 
 	<!-- firebase messages -->
   <ul id="firebase-messages"></ul>
 
   <!-- user-name form -->
-  <form id="firebase-form-username" action="">
-	  <input id="firebase-u" autocomplete="off" /><button>Send</button>
-  </form>
-
+  <div id="hidden-form" style="display: none;">
+	  <form id="firebase-form-username" action="">
+		  <input id="firebase-u" autocomplete="off" /><button>Send</button>
+	  </form>
+  </div>
 
 	<div class="container-full">
 		<h1>Need to identify poeple based on socket and visual identifier. odd number message colour change doesn't work when a user send mulitple messages in a row.</h1>
