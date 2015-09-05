@@ -59,7 +59,7 @@
 		  <!--add messages to page -->
 		  socket.on('chat message',  function (data) {
 			  if(data['name'] == username) {
-				  $('#messages').append($('<li class="list-group-item" style="background: #c3c3c3; color: #000000;">').text("{0}: {1}".f(data['name'], data['message'])));
+				  $('#messages').append($('<li class="list-group-item" style="background: #eee; color: #783F7B;">').text("{0}: {1}".f(data['name'], data['message'])));
 			  } else {
 				  $('#messages').append($('<li class="list-group-item not-my-message">').text("{0}: {1}".f(data['name'], data['message'])));
 			  }
@@ -97,6 +97,17 @@
 			</div>
 
 		</div> <!-- /row -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"><span>Conversation</span>
+					</div>
+					<div class="panel-body">
+						<ul id="messages" class="list-group"></ul>
+					</div>
+				</div>
+			</div>
+		</div><!-- /row -->
 	</div> <!-- /container full -->
 
 	<div class="container">
