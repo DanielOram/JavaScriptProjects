@@ -21,23 +21,7 @@
 		  
 		  
 
-		  <script>
-			  $(document).ready(function () {
-				  var socket = io();
-				  $('form').submit(function () {
-					  if ( $.trim( $('#m').val() ) != '' ){
-					  	socket.emit('chat message', $('#m').val());
-					  }
-					  $('#m').val('');
-					  return false;
-				  });
-				  <!--add messages to page -->
-				  socket.on('chat message', function (msg) {
-					  $('#messages').append($('<li class="list-group-item">').text(msg));
-				  });
-			  });
 
-		  </script><!-- socket.io client side processor -->
 
 	  
 	  <title>Socket.IO chat</title>
@@ -49,6 +33,27 @@
   </head>
   <body>
 
+  <script>
+	  $(document).ready(function () {
+		  var username = 'Joe Bloggs';
+		  var socket = io();
+		  username = prompt("Enter a username", "Joe Bloggs");
+		  $('#username-span').text(username);
+		  $('form').submit(function () {
+			  if ( $.trim( $('#m').val() ) != '' ){
+				  socket.emit('chat message', {message: $('#m').val(), name: username });
+			  }
+			  $('#m').val('');
+			  return false;
+		  });
+		  <!--add messages to page -->
+		  socket.on('chat message',  function (data) {
+			  $('#messages').append($('<li class="list-group-item">').text(data['name']+': '+data['message']));
+		  });
+	  });
+
+  </script><!-- socket.io client side processor -->
+
 	  <!--
     <ul id="messages"></ul>
     <form action="">
@@ -56,7 +61,7 @@
     </form>
 	-->
 	<div class="container-full">
-		<h4>Need to identify poeple based on socket and visual identifier. odd number message colour change doesn't work when a user send mulitple messages in a row.</h4>
+		<h4>Need to identify people based on socket and visual identifier. odd number message colour change doesn't work when a user send mulitple messages in a row.</h4>
 		<div class="row">
 
 			<div class="col-lg-12 text-center v-center">
@@ -70,6 +75,7 @@
 
 					<div class="input-group input-group-lg">
 						<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></span>
+						<span class="input-group-addon" id="sizing-addon2"><span id="username-span"></span></span>
 						<input id="m" autocomplete="off" type="text" class="form-control input-lg" placeholder="Type a message here..." aria-describedby="sizing-addon1">
 						<span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">Enter</button></span>
 					</div>
