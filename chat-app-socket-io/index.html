@@ -26,10 +26,7 @@
 	  
 	  <title>Socket.IO chat</title>
 
-	  <style>
 
-		  #messages li:nth-child(odd) { background: #eee; }
-	  </style>
   </head>
   <body>
 
@@ -61,7 +58,11 @@
 		  });
 		  <!--add messages to page -->
 		  socket.on('chat message',  function (data) {
-			  $('#messages').append($('<li class="list-group-item">').text("my name is {0} and my message is: {1}".f(data['name'],data['message'])));
+			  if(data['name'] == username) {
+				  $('#messages').append($('<li class="list-group-item" style="background: #c3c3c3; color: #000000;">').text("{0}: {1}".f(data['name'], data['message'])));
+			  } else {
+				  $('#messages').append($('<li class="list-group-item not-my-message">').text("{0}: {1}".f(data['name'], data['message'])));
+			  }
 		  });
 	  });
 
@@ -74,7 +75,6 @@
     </form>
 	-->
 	<div class="container-full">
-		<h4>Need to identify people based on socket and visual identifier. odd number message colour change doesn't work when a user send mulitple messages in a row.</h4>
 		<div class="row">
 
 			<div class="col-lg-12 text-center v-center">
@@ -105,7 +105,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading"><span>Conversation</span>
 					</div>
 					<div class="panel-body">
 						<ul id="messages" class="list-group"></ul>
