@@ -24,12 +24,12 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.1666665">
-              <caret line="110" column="46" selection-start-line="110" selection-start-column="46" selection-end-line="110" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.45454547">
+              <caret line="90" column="36" selection-start-line="90" selection-start-column="36" selection-end-line="90" selection-end-column="36" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1441461884000" expanded="true" signature="1967:2000" placeholder="..." />
+                <marker date="1441464616000" expanded="true" signature="2121:2154" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -63,7 +63,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="100" />
+    <option name="x" value="-1" />
+    <option name="y" value="174" />
     <option name="width" value="1260" />
     <option name="height" value="643" />
   </component>
@@ -221,7 +222,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="100" width="1260" height="643" extended-state="0" />
+    <frame x="-1" y="174" width="1260" height="643" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -266,7 +267,7 @@
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1441461884000" expanded="true" signature="1967:2000" placeholder="..." />
+            <marker date="1441464616000" expanded="true" signature="2121:2154" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -321,12 +322,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.1666665">
-          <caret line="110" column="46" selection-start-line="110" selection-start-column="46" selection-end-line="110" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.45454547">
+          <caret line="90" column="36" selection-start-line="90" selection-start-column="36" selection-end-line="90" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1441461884000" expanded="true" signature="1967:2000" placeholder="..." />
+            <marker date="1441464616000" expanded="true" signature="2121:2154" placeholder="..." />
           </folding>
         </state>
       </provider>
