@@ -33,6 +33,14 @@
   <script>
 	  $(document).ready(function () {
 
+		  //resizing message board
+		  function myFunction() {
+			  var w = window.innerWidth*0.4;
+			  var h = window.innerHeight*0.4;
+			  $('.panel-body#message-board').attr('style', 'height:'+h+'px; max-height: '+h+'px; overflow: scroll');
+		  }
+		  myFunction();
+
 		  //string formatting function
 		  String.prototype.format = String.prototype.f = function() {
 			  var s = this,
@@ -102,7 +110,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><span><h3>message board</h3></span>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body" id="message-board" style="overflow: scroll">
 						<ul id="messages" class="list-group"></ul>
 					</div>
 				</div>
@@ -117,7 +125,7 @@
 
 	</div>
 
-	<div id="footer">
+	<div id="footer" style="background-color: #783F7B; color: #cccccc;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
