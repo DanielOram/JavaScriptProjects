@@ -35,6 +35,19 @@
 
   <script>
 	  $(document).ready(function () {
+
+		  //string formatting function
+		  String.prototype.format = String.prototype.f = function() {
+			  var s = this,
+					  i = arguments.length;
+
+			  while (i--) {
+				  s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+			  }
+			  return s;
+		  };
+
+
 		  var username = 'Joe Bloggs';
 		  var socket = io();
 		  username = prompt("Enter a username", "Joe Bloggs");
@@ -48,7 +61,7 @@
 		  });
 		  <!--add messages to page -->
 		  socket.on('chat message',  function (data) {
-			  $('#messages').append($('<li class="list-group-item">').text(data['name']+': '+data['message']));
+			  $('#messages').append($('<li class="list-group-item">').text("my name is {0} and my message is: {1}".f(data['name'],data['message'])));
 		  });
 	  });
 
