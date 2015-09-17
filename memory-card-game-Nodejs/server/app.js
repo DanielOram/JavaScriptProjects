@@ -33,34 +33,8 @@ require('./config/express')(app);
 require('./routes')(app);
 
 
-//my code
-var dir_path = require('path');
-
-app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
 
 
-//serve files in static folder
-app.use(express.static(path.join(__dirname, 'public')));
-
-//send get request to server at given uri
-app.get('/hello', function(req,res) {
-  //res.send('Hello World!');
-  res.sendFile(dir_path.join(__dirname + '/public/views/index.html'));
-});
-
-app.get('/memory-card-app', function (req, res) {
-  res.send('memory-card-app');
-});
-
-// set static directories
-//app.use(express.static(path.join(__dirname, 'public')));
-
-
-// viewed at http://localhost:8080 -> this should route the index.html page to the root url
-app.get('/', function(req, res) {
-  res.sendFile(dir_path.join(__dirname + '/index.html'));
-});
 
 // Start server
 server.listen(config.port, config.ip, function () {
