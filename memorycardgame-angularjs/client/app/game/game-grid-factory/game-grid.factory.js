@@ -172,64 +172,64 @@ angular.module('memorycardgameApp')
      var icon = '';
      switch (cardPic) {
        case 1:
-       icon = 'app/Images/Icons/blank.png'
+       icon = 'assets/images/Icons/blank.png'
        break;
        case 2:
-       icon = 'app/Images/Icons/cake.png'
+       icon = 'assets/images/Icons/cake.png'
        break;
        case 3:
-       icon = 'app/Images/Icons/chain.png'
+       icon = 'assets/images/Icons/chain.png'
        break;
        case 4:
-       icon = 'app/Images/Icons/coffee.png'
+       icon = 'assets/images/Icons/coffee.png'
        break;
        case 5:
-       icon = 'app/Images/Icons/cross.png'
+       icon = 'assets/images/Icons/cross.png'
        break;
        case 6:
-       icon = 'app/Images/Icons/drop.png'
+       icon = 'assets/images/Icons/drop.png'
        break;
        case 7:
-       icon = 'app/Images/Icons/envelope.png'
+       icon = 'assets/images/Icons/envelope.png'
        break;
        case 8:
-       icon = 'app/Images/Icons/flower.png'
+       icon = 'assets/images/Icons/flower.png'
        break;
        case 9:
-       icon = 'app/Images/Icons/heart.png'
+       icon = 'assets/images/Icons/heart.png'
        break;
        case 10:
-       icon = 'app/Images/Icons/house.png'
+       icon = 'assets/images/Icons/house.png'
        break;
        case 11:
-       icon = 'app/Images/Icons/key.png'
+       icon = 'assets/images/Icons/key.png'
        break;
        case 12:
-       icon = 'app/Images/Icons/left_arrow.png'
+       icon = 'assets/images/Icons/left_arrow.png'
        break;
        case 13:
-       icon = 'app/Images/Icons/nuclear.png'
+       icon = 'assets/images/Icons/nuclear.png'
        break;
        case 14:
-       icon = 'app/Images/Icons/paperclip.png'
+       icon = 'assets/images/Icons/paperclip.png'
        break;
        case 15:
-       icon = 'app/Images/Icons/plus.png'
+       icon = 'assets/images/Icons/plus.png'
        break;
        case 16:
-       icon = 'app/Images/Icons/present.png'
+       icon = 'assets/images/Icons/present.png'
        break;
        case 17:
-       icon = 'app/Images/Icons/right_arrow.png'
+       icon = 'assets/images/Icons/right_arrow.png'
        break;
        case 18:
-       icon = 'app/Images/Icons/tick.png'
+       icon = 'assets/images/Icons/tick.png'
        break;
        case 19:
-       icon = 'app/Images/Icons/wine.png'
+       icon = 'assets/images/Icons/wine.png'
        break;
        case 20:
-       icon = 'app/Images/Icons/wrench.png'
+       icon = 'assets/images/Icons/wrench.png'
        break;
      }
      return icon;
